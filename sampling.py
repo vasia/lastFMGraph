@@ -16,7 +16,7 @@ def sampling(user, sample_size):
 	#degree_sample = []
 	page = 1
 	now = datetime.datetime.now()
-	f = open('sample_' + str(now), 'a')
+	f = open('/home/hinata/PythonProjects/lastFMGraph/output/sample_' + str(sample_size) + '_' + str(now), 'a')
 	last_sampled_user = user
 	while sample_size > 0:
 		command = COMM+user+"&limit=1&page="+str(page)+"&api_key="+api_key	#limit=1 always
