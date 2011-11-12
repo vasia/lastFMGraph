@@ -46,12 +46,11 @@ def thinning(sample,k):
 
 if __name__ == '__main__':
 	
-	if len(sys.argv) != 3:
-		print "\nUsage: " + sys.argv[0] + " sample_size k\n"
+	if len(sys.argv) != 2:
+		print "\nUsage: " + sys.argv[0] + " sample_size\n"
 		sys.exit(0)
 
 	sample_size = int(sys.argv[1])	#sample size
-	k = int(sys.argv[2])			#thinning size
 	user = "rj"		#username of starting user
 	sample = []		#sampled nodes
 	t_sample = []

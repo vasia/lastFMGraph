@@ -17,6 +17,7 @@ def read_samples(filename):
 		elements = line.split()
 		sample.append(elements[0])
 		degree_sample.append(int(elements[1]))
+	f.close()
 
 ## population estimation ##
 #sample: usernames sample
