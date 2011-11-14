@@ -16,7 +16,7 @@ def sampling(user, sample_size):
 	#degree_sample = []
 	page = 1
 	now = datetime.datetime.now()
-	f = open('/home/hinata/PythonProjects/lastFMGraph/output/sample_' + str(sample_size) + '_' + str(now), 'a')
+	f = open('/home/hinata/PythonProjects/lastFMGraph/output/sample_' + str(sample_size), 'a')
 	last_sampled_user = user
 	while sample_size > 0:
 		command = COMM+user+"&limit=1&page="+str(page)+"&api_key="+api_key	#limit=1 always
@@ -46,12 +46,13 @@ def thinning(sample,k):
 
 if __name__ == '__main__':
 	
-	if len(sys.argv) != 2:
-		print "\nUsage: " + sys.argv[0] + " sample_size\n"
+	if len(sys.argv) != 3:
+		print "\nUsage: " + sys.argv[0] + " sample_size user\n"
 		sys.exit(0)
 
 	sample_size = int(sys.argv[1])	#sample size
-	user = "rj"		#username of starting user
+	user = sys.argv[2]	#user
+	#user = "doveris"		#username of starting user
 	sample = []		#sampled nodes
 	t_sample = []
 
