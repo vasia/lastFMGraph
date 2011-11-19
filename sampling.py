@@ -12,8 +12,6 @@ COMM = 'http://ws.audioscrobbler.com/2.0/?method=user.getfriends&user='
 
 #sampling function
 def sampling(user, sample_size):
-	#sample = []
-	#degree_sample = []
 	page = 1
 	now = datetime.datetime.now()
 	f = open('/home/hinata/PythonProjects/lastFMGraph/output/sample_' + str(sample_size), 'a')
@@ -24,14 +22,10 @@ def sampling(user, sample_size):
 		degree = int(re.search('total="(\d+)"', data).group(1))	#node degree
 		
 		if degree != 0:	
-			#sample.append(user) 
-			#degree_sample.append(degree)	
 			line = user + " " + str(degree) + "\n" 
 			f.write(line) #add user and degree to the sample file
 			last_sampled_user = user
-			#print degree
 			random_index = int(random.uniform(1, degree+1)) #since it is [a,b)
-			#print "random index is page= " + str(random_index)
 			command = COMM+user+"&limit=1&page="+str(random_index)+"&api_key="+api_key
 			data = urllib2.urlopen(command).read()
 			user = re.findall("<name>(.*)</name>", data)[0]  #assign the random friend to user, in order to be included in the next getfriend request
@@ -41,9 +35,6 @@ def sampling(user, sample_size):
 	f.close()	
 	#return sample
 				
-def thinning(sample,k):	
-	return sample[::k]
-
 if __name__ == '__main__':
 	
 	if len(sys.argv) != 3:
@@ -52,13 +43,10 @@ if __name__ == '__main__':
 
 	sample_size = int(sys.argv[1])	#sample size
 	user = sys.argv[2]	#user
-	#user = "doveris"		#username of starting user
 	sample = []		#sampled nodes
 	t_sample = []
 
 	
 	#sampling
 	sampling(user, sample_size)
-	#thining
-	#t_sample = thinning(sample, k)
 	
