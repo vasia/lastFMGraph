@@ -9,4 +9,7 @@ echo "Sampling with sample_size = 5000"
 python sampling.py 3000
 echo "Sampling with sample_size = 10000"
 python sampling.py 10000
+echo "Sampling with sample_size = 20000"
+python sampling.py 20000
+echo "*** Finished execution of sampling ***"
 
